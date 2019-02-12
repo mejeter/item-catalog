@@ -34,12 +34,10 @@ The `database_setup.py` file configures the database and defines the classes. Th
 
 
 #### JSON Endpoints
-**/genre/JSON**
-
+**/genre/JSON**  
 Returns JSON to view all genres.
 
-**/genre/<int:genre_id>/movie/JSON**
-
+**/genre/<int:genre_id>/movie/JSON**  
 Returns JSON to view all movies within a given genre.
 
 
