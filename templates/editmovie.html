@@ -1,0 +1,40 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row divider gold">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row banner menu">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1>Edit Movie</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-1 padding">
+			<form action="{{url_for('editMovie', genre_id=genre.id, movie_id=movie.id)}}" method="post">
+				<div class="form-group">
+					<label for="title">Title:</label>
+					<input type ="text" maxlength="80" class="form-control" name="title" value="{{movie.title}}">
+
+					<label for="year">Year:</label>
+					<input type ="number" maxlength="4" class="form-control" name="year" value="{{movie.year}}">
+
+					<label for="rating">Rating:</label>
+					<input type ="text" maxlength="5" class="form-control" name="rating" value="{{movie.rating}}">
+
+					<label for="plot-summary">Plot Summary:</label>
+					<textarea class="form-control" maxlength="250" rows="3" name="plot_summary">{{movie.plot_summary}}</textarea>
+
+					<label for="poster-image">Poster:</label>
+					<input type ="url" class="form-control" maxlength="250" name="poster_image" value="{{movie.poster_image}}">
+				</div>
+				<button type="submit" class="btn btn-default" id="submit" type="submit">
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Save</button>
+			</form>
+			<a href="{{url_for('showMovies', genre_id=genre.id)}}">
+				<button class="btn btn-default delete">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel</button>
+			</a>
+		</div>
+	</div>
+{% endblock %}

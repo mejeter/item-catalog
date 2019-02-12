@@ -1,0 +1,59 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+	<div class="row divider gold">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row banner menu">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1>{{ genre.name }}
+				<figure class="admin">
+					<img src="{{ admin.picture}}">
+					<figcaption>{{ admin.name }}</figcaption>
+				</figure>
+			</h1>
+		</div>
+	</div>
+
+	<div class="row padding">
+		<div class="col-md-1"></div>
+		<div class="col-md-11 padding-none"></div>
+		<div class="col-md-7"></div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<div class="flash">
+				{% with messages = get_flashed_messages() %}
+		    	{% if messages %}
+			      <ul>
+			      	{% for message in messages %}
+			        	<li> <strong> {{ message }} </strong> </li>
+		      		{% endfor %}
+		      	</ul>
+		      {% endif %}
+		    {% endwith %}
+			</div>
+		</div>
+	</div>
+
+	{% if movies !=[] %}
+		<div class="row">
+			<div class="col-md-1">
+				<div class="col-md-3">
+					<h2>Movies</h2>
+						{% for m in movies %}
+							<div class="movie">
+								<h3>{{m.title}}</h3>
+								<h5>{{m.year}}</h5>
+								<h5>{{m.rating}}</h5>
+								<p>{{m.plot_summary}}</p>
+								<img src="{{ m.poster_image}}" class="poster" alt="movie poster">
+							</div>
+						{% endfor %}
+				</div>
+			</div>
+		</div>
+	{% endif %}
+{% endblock %}
